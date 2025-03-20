@@ -18,12 +18,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Download NLTK data
 RUN python -c "import nltk; nltk.download('punkt'); nltk.download('wordnet'); nltk.download('averaged_perceptron_tagger')"
 
-# Copy the rest of the application
-COPY backend/ ./backend/
-COPY frontend/ ./frontend/
+# Copy the application files
+COPY . .
 
 # Set environment variables
-ENV FLASK_APP=backend.api
+ENV FLASK_APP=backend/api.py
 ENV FLASK_ENV=production
 ENV PORT=10000
 
