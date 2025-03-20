@@ -1,11 +1,10 @@
 services:
   - type: web
     name: data-solution-backend
-    env: python
-    buildCommand: pip install -r backend/requirements.txt
-    startCommand: gunicorn backend.api:app -c backend/gunicorn_config.py
+    env: docker
+    dockerfilePath: ./Dockerfile
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.0
       - key: OPENAI_API_KEY
-        sync: false 
+        sync: false
+      - key: PORT
+        value: 10000 
